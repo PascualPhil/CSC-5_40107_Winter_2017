@@ -21,22 +21,21 @@ const int ACRTOFT=43560; //Acres to Square Feet Conversion
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables
-    int numAcre,numSqFt; //Number of Acres; Number of Square Feet
-    
+    int numFeet=391876; //Number of square feet to be converted
+    int numAcre; //Number of Acres
     //Input values
-    cout<<"This Program is designed to convert"<<endl;
-    cout<<"an input number of Acres to equivalent"<<endl;
-    cout<<"number of Square Feet."<<endl;
-    //Explanation of Program
     
-    cout<<"Enter number of Acres: "<<endl;
-    cin>>numAcre;
+    //Explanation of Program
+    cout<<"This program will indicate the number of acres that"<<endl;
+    cout<<"are present in 391,876 square feet."<<endl;
     //Input of number of Acres to be converted
     
     //Process by mapping inputs to outputs
-    numSqFt=numAcre*ACRTOFT; //Square Feet=Number of Acres * Acre to Sq Ft Conv
+    numAcre=numFeet/ACRTOFT; //Number of square feet divided by Acres to Feet constant
+    
     //Output values
-    cout<<"Equivalent Square Footage = "<<numSqFt<<endl;
+    cout<<"Number of Square Feet: "<<static_cast<int>(numFeet)<<" ft^2."<<endl;
+    cout<<"Number of Acres:       "<<numAcre<<endl;
     //Exit stage right!
     return 0;
 }
