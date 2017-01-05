@@ -13,9 +13,9 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ppascual_savitch_8thed_ch1_pr9_freefall_v2
-OUTPUT_BASENAME=ppascual_savitch_8thed_ch1_pr9_freefall_v2
-PACKAGE_TOP_DIR=ppascualsavitch8thedch1pr9freefallv2/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ppascual_savitch_8thed_ch1_pr9_freefall_v2_roundoff
+OUTPUT_BASENAME=ppascual_savitch_8thed_ch1_pr9_freefall_v2_roundoff
+PACKAGE_TOP_DIR=ppascualsavitch8thedch1pr9freefallv2roundoff/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/ppascualsavitch8thedch1pr9freefallv2/bin"
+makeDirectory "${NBTMPDIR}/ppascualsavitch8thedch1pr9freefallv2roundoff/bin"
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/ppascualsavitch8thedch1pr9freefallv2.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/ppascualsavitch8thedch1pr9freefallv2roundoff.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/ppascualsavitch8thedch1pr9freefallv2.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/ppascualsavitch8thedch1pr9freefallv2roundoff.tar *
 checkReturnCode
 
 # Cleanup
