@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
     //Process by mapping inputs to outputs
     
     //Output values
+    cout<<"Here is your big C formed with the letter '"<<c<<"'."<<endl;
     cout<<"  "<<c<<" "<<c<<" "<<c<<endl;
     cout<<" "<<c<<"     "<<c<<endl;
     cout<<c<<endl;
