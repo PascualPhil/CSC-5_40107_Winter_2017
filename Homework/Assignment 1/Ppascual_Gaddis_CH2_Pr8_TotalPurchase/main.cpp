@@ -36,6 +36,8 @@ int main(int argc, char** argv) {
     //Process by mapping inputs to outputs
     totPrce = itemOne+itemTwo+itemThr+itemFou+itemFiv;
     totTax = totPrce*saleTax/PERCENT;
+    int id=totTax*100+0.5;  //Integer ID for rounding sales tax to 2 decimal places
+    totTax=id/100.0f;
     totPaid = totPrce+totTax;
     //Output values
     cout<<"Price of Item 1: $"<<static_cast<float>(itemOne)<<endl;
