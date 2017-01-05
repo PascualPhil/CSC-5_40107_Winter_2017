@@ -43,9 +43,9 @@ int main(int argc, char** argv) {
     cout<<"Price of Item 3: $"<<static_cast<float>(itemThr)<<endl;
     cout<<"Price of Item 4: $"<<static_cast<float>(itemFou)<<endl;
     cout<<"Price of Item 5: $"<<static_cast<float>(itemFiv)<<endl;
-    cout<<"Subtotal:        $"<<totPrce<<endl;
-    cout<<"Sales Tax:       $"<<totTax<<endl;
-    cout<<"Total Plus Tax:  $"<<totPaid<<endl;
+    cout<<"Subtotal:        $"<<totPrce<<endl; //Totals Items 1-5 w/ no tax
+    cout<<"Sales Tax:       $"<<totTax<<endl;  //Calculated Sales Tax
+    cout<<"Total Plus Tax:  $"<<totPaid<<endl; //Subtotal plus Tax total
     //Exit stage right!
     return 0;
 }
