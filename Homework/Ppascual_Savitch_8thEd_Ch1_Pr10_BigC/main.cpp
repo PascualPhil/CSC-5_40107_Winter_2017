@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     cout<<"This program outputs a large C"<<endl;
     cout<<"With a letter the user chooses"<<endl;
     cout<<"What letter would you like?"<<endl;
-    cin>>c;
+    cin>>c; //Input defining letter that will make the large C
     
     //Process by mapping inputs to outputs
     
@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
     cout<<c<<endl;
     cout<<c<<endl;
     cout<<" "<<c<<"     "<<c<<endl;
-    cout<<"  "<<c<<" "<<c<<" "<<c<<endl;
+    cout<<"  "<<c<<" "<<c<<" "<<c<<endl;  //Outputs putting inputs into proper position
     //Exit stage right!
     return 0;
 }
