@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=CSC-5 Template (COPY ONLY)
+PROJECTNAME=Ppascual_Gaddis_8thEd_Ch2_Pr4_RestaurantBill
 
 # Active Configuration
 DEFAULTCONF=Debug

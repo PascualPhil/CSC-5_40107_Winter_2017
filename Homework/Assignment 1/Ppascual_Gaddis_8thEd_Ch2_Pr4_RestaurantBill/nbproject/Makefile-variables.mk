@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=csc-5_template__copy_only_
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/csc-5_template__copy_only_
+CND_ARTIFACT_NAME_Debug=ppascual_gaddis_8thed_ch2_pr4_restaurantbill
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/ppascual_gaddis_8thed_ch2_pr4_restaurantbill
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=csc-5template(copyonly).tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/csc-5template(copyonly).tar
+CND_PACKAGE_NAME_Debug=ppascualgaddis8thedch2pr4restaurantbill.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/ppascualgaddis8thedch2pr4restaurantbill.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=csc-5_template__copy_only_
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/csc-5_template__copy_only_
+CND_ARTIFACT_NAME_Release=ppascual_gaddis_8thed_ch2_pr4_restaurantbill
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/ppascual_gaddis_8thed_ch2_pr4_restaurantbill
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=csc-5template(copyonly).tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/csc-5template(copyonly).tar
+CND_PACKAGE_NAME_Release=ppascualgaddis8thedch2pr4restaurantbill.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/ppascualgaddis8thedch2pr4restaurantbill.tar
 #
 # include compiler specific variables
 #

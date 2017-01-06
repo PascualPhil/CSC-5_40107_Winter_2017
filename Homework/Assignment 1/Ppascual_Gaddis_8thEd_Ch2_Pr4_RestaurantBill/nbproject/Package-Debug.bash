@@ -13,9 +13,9 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/csc-5_template__copy_only_
-OUTPUT_BASENAME=csc-5_template__copy_only_
-PACKAGE_TOP_DIR=csc-5template(copyonly)/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ppascual_gaddis_8thed_ch2_pr4_restaurantbill
+OUTPUT_BASENAME=ppascual_gaddis_8thed_ch2_pr4_restaurantbill
+PACKAGE_TOP_DIR=ppascualgaddis8thedch2pr4restaurantbill/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/csc-5template(copyonly)/bin"
+makeDirectory "${NBTMPDIR}/ppascualgaddis8thedch2pr4restaurantbill/bin"
 copyFileToTmpDir "${OUTPUT_PATH}.exe" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}.exe" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/csc-5template\(copyonly\).tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/ppascualgaddis8thedch2pr4restaurantbill.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/csc-5template\(copyonly\).tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/ppascualgaddis8thedch2pr4restaurantbill.tar *
 checkReturnCode
 
 # Cleanup
