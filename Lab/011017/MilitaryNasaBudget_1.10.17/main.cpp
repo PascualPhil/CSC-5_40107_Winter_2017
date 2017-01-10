@@ -34,8 +34,8 @@ int main(int argc, char** argv) {
     nasPerc=(nasBudg/fedBudg)*PERCENT;
     //Output values
     cout<<"According to www.nationalpriorities.org, the 2016 US military budget"<<endl;
-    cout<<"totalled $598.5 billion.  According to www.nasa.gov, the 2016 NASA budget"<<endl;
-    cout<<"totalled $18.5 billion.  The total US budget totals $3.854 trillion."<<endl;
+    cout<<"totaled $598.5 billion.  According to www.nasa.gov, the 2016 NASA budget"<<endl;
+    cout<<"totaled $18.5 billion.  The total US budget totals $3.854 trillion."<<endl;
     cout<<"According to those totals, the military accounts for "<<fixed<<setprecision(2)<<milPerc
             <<"% of the total US federal budget."<<endl;
     cout<<"According to those totals, NASA accounts for "<<fixed<<setprecision(2)<<nasPerc
