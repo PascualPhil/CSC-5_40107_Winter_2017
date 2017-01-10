@@ -2,8 +2,7 @@
   File:   main.cpp
   Author: Phillip Pascual
   Created on January 10, 2017, 11:23 AM
-  Purpose:  Template to be used in all programming
-            projects!
+  Purpose:  Per capita debt calculator program.
  */
 
 //System Libraries
