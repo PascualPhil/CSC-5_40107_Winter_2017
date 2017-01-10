@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=LabAssignment_011017_MilitaryNasaBudget
+PROJECTNAME=MilitaryNasaBudget_1.10.17
 
 # Active Configuration
 DEFAULTCONF=Debug
