@@ -21,11 +21,10 @@ using namespace std;
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables
-    int numOne,     //First number
-        numTwo;     //Second number
-    
+    int numOne,         //First number entered
+        numTwo;         //Second number entered
     //Input values
-    cout<<"This program will determine if one number is greater or less than"<<endl;
+    cout<<"This program will determine if one number is greater than or less than"<<endl;
     cout<<"another."<<endl;
     cout<<"Please enter the first number: ";
     cin>>numOne;
@@ -34,9 +33,9 @@ int main(int argc, char** argv) {
     
     //Process by mapping inputs to outputs
     if(numOne>numTwo)
-        cout<<numOne<<" is larger than "<<numTwo<<endl;
+        cout<<numOne<<" is greater than "<<numTwo<<endl;
     else
-        cout<<numTwo<<" is larger than "<<numOne<<;
+        cout<<numTwo<<" is greater than "<<numOne<<endl;
     //Output values
 
     //Exit stage right!
