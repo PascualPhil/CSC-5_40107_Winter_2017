@@ -41,11 +41,11 @@ int main(int argc, char** argv) {
         cout<<"Your BMI is "<<fixed<<setprecision(2)<<bmi<<" and you are considered of OPTIMAL weight."<<endl;
     }
     else if (bmi>25){
-            cout<<"Your BMI is "<<fixed<<setprecision(2)<<bmi<<" and you are considered OVERWEIGHT."<<endl;
+        cout<<"Your BMI is "<<fixed<<setprecision(2)<<bmi<<" and you are considered OVERWEIGHT."<<endl;
     }
     
     else if (bmi<18.5){
-                cout<<"Your BMI is "<<fixed<<setprecision(2)<<bmi<<" and you are considered UNDERWEIGHT."<<endl;
+        cout<<"Your BMI is "<<fixed<<setprecision(2)<<bmi<<" and you are considered UNDERWEIGHT."<<endl;
     }
     //Output values
 
