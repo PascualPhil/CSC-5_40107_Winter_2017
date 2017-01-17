@@ -25,7 +25,8 @@ int main(int argc, char** argv) {
     char grade;
     
     //Input values
-    cout<<"This program will take an input score and will output the letter grade."<<endl;
+    cout<<"This program will take an input score and will output"
+            " the letter grade."<<endl;
     cout<<"Input the score 0 to 100: ";
     cin>>score;
     
