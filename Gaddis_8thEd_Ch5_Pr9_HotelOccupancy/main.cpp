@@ -43,10 +43,11 @@ int main(int argc, char** argv) {
         cin>>floors;
     }
     //Loop to obtain number of rooms per floor and occupied rooms per floor
-    for(int flrNum=1;flrNum<=floors;flrNum++)
-        if(flrNum!=13){
+    for(int flrNum=1;flrNum<=floors;flrNum++){
+        if(flrNum!=13)
             cout<<"Please enter the number of rooms on Floor "<<flrNum<<": ";
             cin>>roomsFl;
+            totRms+=roomsFl;    //Total rooms accumulator
             //Loop for input validation for rooms per floor
             while(roomsFl<10){
                 cout<<"Please enter a number greater than 10: ";
@@ -60,13 +61,10 @@ int main(int argc, char** argv) {
                 cout<<"on Floor "<<flrNum<<": ";
                 cin>>occRms;
             }
-    //Accumulators for total rooms and occupied rooms and calculation of empty rooms
-        totRms+=roomsFl;
-        totOcc+=occRms;
-        totEmp=totRms-totOcc;
-    //Occupancy percentage calculator
-        prcOcc=(float)totOcc/(float)totRms;
-        }
+            totOcc+=occRms;     //Occupied rooms accumulator         
+    }
+            //Occupancy percentage calculator
+            prcOcc=totOcc/totRms; 
     //Output values
     cout<<"Total number of rooms: "<<totRms<<endl;
     cout<<"Rooms occupied: "<<totOcc<<endl;
