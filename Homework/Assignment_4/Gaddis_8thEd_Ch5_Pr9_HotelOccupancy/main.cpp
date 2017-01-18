@@ -25,9 +25,7 @@ int main(int argc, char** argv) {
     int floors,                 //Number of floors
         roomsFl,                //Rooms per floor
         totRms,                 //Total rooms
-        occRms,                 //Occupied rooms per floor
-        totOcc,                 //Total occupied rooms
-        totEmp;                 //Empty rooms
+        occRms;                 //Occupied rooms per floor
     float prcOcc;                 //Occupancy percentage
     
     //Input values
@@ -47,7 +45,7 @@ int main(int argc, char** argv) {
         if(flrNum!=13)
             cout<<"Please enter the number of rooms on Floor "<<flrNum<<": ";
             cin>>roomsFl;
-            totRms+=roomsFl;    //Total rooms accumulator
+            roomsFl+=roomsFl;    //Total rooms accumulator
             //Loop for input validation for rooms per floor
             while(roomsFl<10){
                 cout<<"Please enter a number greater than 10: ";
@@ -55,20 +53,20 @@ int main(int argc, char** argv) {
             }
             cout<<"Please enter the number of rooms occupied on Floor "<<flrNum<<": ";
             cin>>occRms;
+            occRms+=occRms;     //Occupied rooms accumulator    
             //Loop to validate that rooms occupied less than/equal to rooms per floor
             while(occRms>roomsFl){
                 cout<<"Please ensure # of rooms occupied less than or equal to # of rooms"<<endl;
                 cout<<"on Floor "<<flrNum<<": ";
                 cin>>occRms;
-            }
-            totOcc+=occRms;     //Occupied rooms accumulator         
+            }     
     }
             //Occupancy percentage calculator
-            prcOcc=totOcc/totRms; 
+            prcOcc=(float)occRms/roomsFl;
     //Output values
-    cout<<"Total number of rooms: "<<totRms<<endl;
-    cout<<"Rooms occupied: "<<totOcc<<endl;
-    cout<<"Rooms unoccupied: "<<totEmp<<endl;
+    cout<<"Total number of rooms: "<<roomsFl<<endl;
+    cout<<"Rooms occupied: "<<occRms<<endl;
+    cout<<"Rooms unoccupied: "<<roomsFl-occRms<<endl;
     cout<<"Occupancy Percentage: "<<fixed<<setprecision(2)<<prcOcc*100<<"%"<<endl;
     //Exit stage right!
     return 0;
