@@ -7,6 +7,7 @@
 
 //System Libraries
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -27,8 +28,9 @@ int main(int argc, char** argv) {
     
     //Input values
     cout<<"This program will calculate growth of a population based on the growth rate,"<<endl;
-    cout<<"initial population, and days of growth input by the user.  Please enter all required"<<endl;
-    cout<<"information when prompted."<<endl;
+    cout<<"initial population, and days of growth input by the user.  Please enter all"<<endl;
+    cout<<"required information when prompted."<<endl;
+    cout<<endl;
     
     //Loop to obtain days and validate input
     cout<<"Please enter the number of days of population growth to be calculated: ";
@@ -53,11 +55,14 @@ int main(int argc, char** argv) {
         cout<<"Please enter a positive growth rate: ";
         cin>>rate;
     }
-    
+    //Output table headers
+    cout<<endl;5
+    cout<<"Days:     "<<"Population:"<<endl;
+    cout<<"-----     "<<"-----------"<<endl;
     //Loop to calculate population growth
     for(int calcDay=1;calcDay<=days;calcDay++){
         pop=pop+(pop*(rate/100.0));
-        cout<<calcDay<<"     "<<pop<<endl;
+        cout<<setw(5)<<right<<calcDay<<"     "<<setw(11)<<right<<fixed<<setprecision(2)<<pop<<endl;
     }
     //Output values
 
