@@ -24,7 +24,7 @@ using namespace std;
 int main(int argc, char** argv) {
     //Declare Variables
     int days,               //Days to be calculated
-        pennies,            //Number of pennies
+        pennies=1,            //Number of pennies
         total=0;            //Total pay in period
     
     //Input values
@@ -34,13 +34,17 @@ int main(int argc, char** argv) {
     cout<<endl;
     cout<<"Please enter the number of days worked: ";
     cin>>days;
+    while(days>30){
+        cout<<"Please enter a number of days less than 30: ";
+        cin>>days;
+    }
     
     //Output for table headers
     cout<<"Days:"<<"         Salary:"<<endl;
     cout<<"-----"<<"         -------"<<endl;
+    
     //Loop to calculate salary and accumulate total
-    for(int calcDay=1;calcDay<=days;calcDay++){
-        pennies=pow(2,calcDay-1);
+    for(int calcDay=1;calcDay<=days;calcDay++,pennies*=2){
         total+=pennies;
         cout<<setw(5)<<right<<calcDay<<"     $"<<setw(10)<<right<<fixed<<setprecision(2)<<(pennies/100.0)<<endl;
     }
