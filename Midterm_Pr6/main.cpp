@@ -22,44 +22,43 @@ using namespace std;
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables
-    int x,n,sign=1,num=1;
-    float nfact=1,sum=0,ans=0;
+    int num,k,n,fact,sign=-1;
+    float x,power,sum=0;
     //Program description
     cout<<"This program will find a solution to the following equation:"<<endl;
-    cout<<"sum = x - x^3/3! + x^5/5! - x^7/7! + ... + x^n/n!, where x is a"<<endl;
-    cout<<"positive integer and n is a positive odd integer."<<endl;
+    cout<<"sum = x - x^3/3! + x^5/5! - x^7/7! + ... + x^n/n!, where x and"<<endl;
+    cout<<"n are both integers greater than zero.";
     cout<<endl;
     
     //Input
     cout<<"Please enter the number that you would as n: ";
     cin>>n;
     //Input validation
-    while(n%2!=1 || n==0){
-        cout<<"Please enter a positive odd integer: ";
+    while(n<=0){
+        cout<<"Please enter an integer greater than zero: ";
         cin>>n;
     }
-    cout<<"Please enter the number that you woul like as x: ";
+    cout<<"Please enter the number that you would like as x: ";
     cin>>x;
     while(x<=0){
-        cout<<"Please enter a positive integer: ";
+        cout<<"Please enter an integer greater than zero: ";
         cin>>x;
     }
     //Loops to calculate sum
-    
-    //Main loop
-    while(num<=n){
-        //Factorial loop
-        for(int factc=1;factc<=n;factc++){
-            nfact=nfact*factc;
+    //Main loop that adds/subtracts x^n/n!
+    for(num=1;num<=n;num+=2){
+        power=1;
+        fact=1;
+        //Loop that finds x^n and n!
+        for(k=1;k<=num;k++){
+            power=power*x;
+            fact=fact*k;
         }
-        ans=sign*(pow(x,num))/nfact;
-        sum+=ans;
-        sign*=-1;//Changes sign each loop
-        num+=2;
+        sign*=-1;//Sign change each iteration
+        sum+=sign*power/fact;
     }
     //Output
     cout<<"The sum of the equation is "<<sum<<endl;
-    cout<<nfact;
     //Exit stage right!
     return 0;
 }
