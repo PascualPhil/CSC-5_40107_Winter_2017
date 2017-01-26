@@ -8,6 +8,7 @@
 
 //System Libraries
 #include <iostream>
+
 using namespace std;
 
 //User Libraries
@@ -122,7 +123,7 @@ int main(int argc, char** argv) {
         }
     }
     //Output
-    cout<<written<<" and 00/100 dollars";
+    cout<<written<<" and 00/100 Dollars";
     //Exit stage right!
     return 0;
 }
