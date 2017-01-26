@@ -8,6 +8,8 @@
 
 //System Libraries
 #include <iostream>
+#include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -26,7 +28,7 @@ const int TENS=10;
 int main(int argc, char** argv) {
     //Declare Variables
     string date,payee,actHold;      //Strings for date, payee and account holder
-    int amount;                     //Dollar amount to be sent
+    int amount,orAmnt;                     //Dollar amount to be sent
     char n1000,n100,n10,n1,n20;
     string written;
     
@@ -40,7 +42,8 @@ int main(int argc, char** argv) {
     cout<<"Please enter the date: ";
     cin>>date;
     cout<<"Please enter the payee: ";
-    cin>>payee;
+    cin.ignore();
+    getline(cin,payee);
     cout<<"Please enter the amount in whole numbers, up to $1999: $";
     cin>>amount;
     while(amount<=0||amount>1999){
@@ -48,9 +51,12 @@ int main(int argc, char** argv) {
         cin>>amount;
     }
     cout<<"Please enter name of account holder: ";
-    cin>>actHold;
+    cin.ignore();
+    getline(cin,actHold);
+    cout<<endl;
     
     //Parse the amount
+    orAmnt=amount;
     n1000=(amount-amount%THOUSND)/THOUSND;      //Determines number of thousands
     amount=(amount-n1000*THOUSND);              //Remaining amount without 1000s
     n100=(amount-amount%HUNDRED)/HUNDRED;       //Determines number of hundreds
@@ -80,14 +86,14 @@ int main(int argc, char** argv) {
     }
     //Fill string with Tens
     switch(n10){
-        case 9:written+="Ninety ";break;
-        case 8:written+="Eight ";break;
-        case 7:written+="Seventy ";break;
-        case 6:written+="Sixty ";break;
-        case 5:written+="Fifty ";break;
-        case 4:written+="Fourty ";break;
-        case 3:written+="Thirty ";break;
-        case 2:written+="Twenty ";break;
+        case 9:written+="Ninety-";break;
+        case 8:written+="Eight-";break;
+        case 7:written+="Seventy-";break;
+        case 6:written+="Sixty-";break;
+        case 5:written+="Fifty-";break;
+        case 4:written+="Fourty-";break;
+        case 3:written+="Thirty-";break;
+        case 2:written+="Twenty-";break;
         case 1:{
             n20=amount%20;
             switch(n20){
@@ -107,7 +113,7 @@ int main(int argc, char** argv) {
         default:cout<<"Bad Amount 10s"<<endl;
     }
     //Fill the string with Ones
-    if(n10==0){
+    if(n10>1||n10==0){
         switch(n1){
             case 9:written+="Nine";break;
             case 8:written+="Eight";break;
@@ -123,7 +129,17 @@ int main(int argc, char** argv) {
         }
     }
     //Output
-    cout<<written<<" and 00/100 Dollars";
+    cout<<"Your check is written below:"<<endl;
+    cout<<"----------------------------"<<endl;
+    cout<<actHold<<endl;
+    cout<<"STREET ADDRESS"<<endl;
+    cout<<"CITY, STATE, ZIP                                           "<<right<<setw(8)<<date<<endl;
+    cout<<endl;
+    cout<<"Pay to the Order of: "<<payee<<"                         "<<right<<setw(8)<<orAmnt<<".00"<<endl;
+    cout<<endl;
+    cout<<written<<" and 00/100 Dollars"<<endl;
+    cout<<endl;
+    cout<<"FOR: GOTTA PAY THE RENT                       "<<right<<setw(21)<<actHold;
     //Exit stage right!
     return 0;
 }
