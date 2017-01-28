@@ -113,7 +113,7 @@ void prob1(){
 //Inputs:   Number of years, rise increment
 //Outputs:  Sea level rise
 //******************************************************************************
-void prob2(){
+void prob1(){
     //Declare Variables
     unsigned short numYrs=25;       //Number of years to be calculated
     float incrmnt=1.5;              //Increment of sea level rise per year
