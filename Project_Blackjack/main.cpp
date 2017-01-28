@@ -43,7 +43,6 @@ int main(int argc, char** argv) {
     pp1=p1=rand()%13+1;       
     dd2=d2=rand()%13+1;
     pp2=p2=rand()%13+1;
-    p1=pp1=13;      //To test aces
     
     //Generates card for output based on RNG and adds opening hand values
     //Player cards
