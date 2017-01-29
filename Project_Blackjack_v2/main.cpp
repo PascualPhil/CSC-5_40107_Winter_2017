@@ -140,7 +140,7 @@ int main(int argc, char** argv) {
         case 6:dCards+="7 ";dispD2='7';break;
         case 7:dCards+="8 ";dispD2='8';break;
         case 8:dCards+="9 ";dispD2='9';break;
-        case 9:dCards+="10 ";dispD2='10';break;
+        case 9:dCards+="10 ";dispD2="10";break;
         case 10:dCards+="J ";dispD2='J';break;
         case 11:dCards+="Q ";dispD2='Q';break;
         case 12:dCards+="K ";dispD2='K';break;
@@ -174,7 +174,6 @@ int main(int argc, char** argv) {
     //If player has a natural blackjack.
     if(pTotal==21){
         cout<<"A natural blackjack. You WIN!"<<endl;
-        return 0;
     }
     //Player decides whether to hit or stand.
     cout<<"Would you like to [H]it or [S]tand? ";
@@ -184,7 +183,7 @@ int main(int argc, char** argv) {
         cin>>choice;
     }
     //If player chooses to hit
-    if(choice=='H'||choice=='h') {
+    while(choice=='H'||choice=='h') {
         int pAdd=0;
         //Draws the next player card
         pAdd=rand()%13+1;
@@ -224,8 +223,7 @@ int main(int argc, char** argv) {
         }
         cout<<"Your hand is now "<<pCards<<"= "<<pTotal<<endl;
         if(pTotal>21){
-            cout<<"Sorry, you BUST!"<<endl;
-            return 0;
+            cout<<"Sorry, you BUST!"<<endl;break;
         }
         else{
         cout<<"Would you like to [H]it or [S]tand? ";
@@ -236,8 +234,10 @@ int main(int argc, char** argv) {
             cout<<"Please choose H or S: ";
             cin>>choice;
         }
+        if (choice=='S'||choice=='s'){
+        }
     }
-    if(choice=='S'||choice=='s'){
+    while(choice=='S'||choice=='s'){
         int dAdd=0;     //Initializes dealer's additional cards
         //First additional card for dealer
         cout<<"The dealer's hand is "<<dCards<<"= "<<dTotal;
@@ -287,31 +287,28 @@ int main(int argc, char** argv) {
             //If dealer total is below a 17, draw the next card
             if(dTotal<17){
             cout<<"Press ENTER to deal the next card";
+            cin.ignore();
             cin.get();
             }
             //If dealer busts, automatic win for player, stop drawing cards
             else if(dTotal>21){
-                deal=false;
+                deal!=true;
                 cout<<"The dealer BUSTS, you win!"<<endl;
-                return 0;
             }
             //Dealer stands on 17-21, stop drawing cards
             else if (dTotal<=21||dTotal>=17){
-                deal=false;                
+                deal!=true;                
                 cout<<"Dealer stands on "<<dTotal<<endl;
 
                 //Compare player hand to dealer hand
                 if(pTotal>dTotal){
-                    cout<<"Congratulations! You WIN!"<<endl;
-                    return 0;
+                    cout<<"Congratulations! You WIN!"<<endl;break;
                 }
                 else if (dTotal>pTotal){
-                    cout<<"Sorry, you lose."<<endl;
-                    return 0;
+                    cout<<"Sorry, you lose."<<endl;break;
                 }
                 else {
-                    cout<<"You push, nobody wins, nobody loses."<<endl;
-                    return 0;
+                    cout<<"You push, nobody wins, nobody loses."<<endl;break;
                 }
             }
         }while(deal=true);
