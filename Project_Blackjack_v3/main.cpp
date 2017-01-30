@@ -33,10 +33,9 @@ int main(int argc, char** argv) {
     //wins/losses/pushes
     unsigned int p1,pp1,p2,pp2,pAdd,d1,dd1,d2,dd2,dAdd,choice,pScore,dScore,games,
             wins=0,lose=0,push=0,tGames=0;
+    
     //String to display cards
     string pCards,dCards;
-    //Boolean to force win if natural blackjack
-    bool natural=true;
             
     //Program description and input of number of games
     cout<<"Welcome to Blackjack!"<<endl;
@@ -215,8 +214,8 @@ int main(int argc, char** argv) {
             //Dealer needs to deal additional cards to himself if less than or equal to 17
             while(dScore<17){
                 //Deal additional dealer cards
-                dAdd=rand()%13+2;
-                switch(dAdd){
+                dAdd=rand()%13+2;       //RNG generates numbers 2-14
+                switch(dAdd){           //Converts 2-14 into playing cards
                     case 2:dCards+="2 ";break;
                     case 3:dCards+="3 ";break;
                     case 4:dCards+="4 ";break;
@@ -232,50 +231,52 @@ int main(int argc, char** argv) {
                     case 14:{dCards+="A ";dAdd=11;}break;
                 }
                     if(dAdd==11&&dScore>=12){//If ace is dealt and score is over 12,
-                        dAdd=1;              //ace treated as 1 instead of 11
+                        dAdd=1;              //one ace treated as 1 instead of 11
                         }
                 dScore+=dAdd;//Add dealer's new score
                 //Dealer's hand displayed and decides if needs to hit again
                 cout<<"The dealer deals himself another card.  His hand is now"<<dCards<<"= "<<dScore<<endl;
-                if(dScore<17){
+                if(dScore<17){//Over 17, hit
                     cout<<"The dealer is still under 17 and needs to hit again..."<<endl;
                 }
-                else if (dScore>=17&&dScore<=21){
+                else if (dScore>=17&&dScore<=21){//Between 17-21, stand
                     cout<<"The dealer stands on 17 or over..."<<endl;
                 }
-                else if (dScore>21){
+                else if (dScore>21){//Over 21, bust
                     cout<<"The dealer busts!"<<endl;
                 }
             }
         }
         cout<<endl;
         //Compare player and dealer scores and determine the winner
-        if(pScore>21){
+        if(pScore>21){//Player score over 21 means automatic loss
             cout<<"Sorry, you lose."<<endl;
-            lose++;     //Wins increment by 1
+            lose++;     //Loss increment by 1
             tGames++;   //Total games increment by 1
             cout<<endl;
         }
-        else if (dScore>21){
+        else if (dScore>21){//Dealer score over 21 means automatic win
             cout<<"Congratulations! You win!"<<endl;
-            wins++;
-            tGames++;
+            wins++;     //Wins increment by 1
+            tGames++;   //Total games increment by 1
             cout<<endl;
         }
-        else if (pScore<dScore){
+        else if (pScore<dScore){//Dealer score greater than player score means
+                                //loss
             cout<<"Sorry, you lose."<<endl;
             lose++;     //Losses increment by 1
             tGames++;   //Total games increment by 1
             cout<<endl;
         }
-        else if (pScore>dScore){
+        else if (pScore>dScore){//Player score greater than dealer score means 
+                                //win
             cout<<"Congratulations! You win!"<<endl;
-            wins++;
-            tGames++;
+            wins++;     //Wins increment by 1
+            tGames++;   //Total games increment by 1
             cout<<endl;
         }
         else{
-            cout<<"A push, nobody wins."<<endl;
+            cout<<"A push, nobody wins."<<endl;//Ties mean push, nobody wins
             push++;     //Pushes increment by 1
             tGames++;   //Total games increment by 1
             cout<<endl;
