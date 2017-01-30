@@ -292,12 +292,12 @@ int main(int argc, char** argv) {
             }
             //If dealer busts, automatic win for player, stop drawing cards
             else if(dTotal>21){
-                deal!=true;
+                deal=false;
                 cout<<"The dealer BUSTS, you win!"<<endl;
             }
             //Dealer stands on 17-21, stop drawing cards
             else if (dTotal<=21||dTotal>=17){
-                deal!=true;                
+                deal=false;                
                 cout<<"Dealer stands on "<<dTotal<<endl;
 
                 //Compare player hand to dealer hand
