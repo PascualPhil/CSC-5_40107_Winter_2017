@@ -1,8 +1,8 @@
 /* 
   File:   main.cpp
   Author: Phillip Pascual
-  Created on February 1, 2017, 10:40 AM
-  Purpose:  Savings parallel array
+  Created on February 1, 2017, 11:15 AM
+  Purpose:  Retirement calculator
  */
 
 //System Libraries
@@ -17,7 +17,7 @@ using namespace std;
 //as well as conversions from system of units to another
 
 //Function Prototypes
-void  savings(int[],float[],float,float,int);
+void  savings(int[],float[],float,float,float,int);
 void  prntAry(int [],float[], int);
 
 //Executable code begins here!!!
@@ -31,12 +31,20 @@ int main(int argc, char** argv) {
     //Input values
     float intRate=0.06f;
     float gift=2.0e4f;
+    float salary=1.2e5f;
+    float percSav=0.15f;
     
+ 
     //Process by mapping inputs to outputs
-    savings(year,balance,gift,intRate,nYears);
+    float savReq=salary/intRate;
+    float yDep=percSav*salary;
+    savings(year,balance,gift,intRate,yDep,nYears);
     
     
     //Output values
+    cout<<"Our Salary = %"<<salary<<endl;
+    cout<<"Yearly Savings Deposit = $"<<yDep<<endl;
+    cout<<"Savings Goal = $"<<savReq<<endl;
     prntAry(year,balance,nYears);
 
     //Exit stage right!
@@ -46,12 +54,12 @@ int main(int argc, char** argv) {
 void  prntAry(int year[],float balance[], int n){
     cout<<"Year   Balance"<<endl;
     for(int i=0;i<n;i++){
-        cout<<setw(3)<<year[i]<<"   $"<<setw(10)<<fixed<<setprecision(2)<<balance[i]<<endl;
+        cout<<setw(3)<<year[i]<<"   $"<<setw(11)<<fixed<<setprecision(2)<<balance[i]<<endl;
     }
     cout<<endl;
 }
 
-void savings(int y[],float b[],float p,float intRate,int nYears){
+void savings(int y[],float b[],float p,float intRate,float yDep,int nYears){
     //Initialize the array
     y[0]=0;
     b[0]=p;
@@ -59,5 +67,6 @@ void savings(int y[],float b[],float p,float intRate,int nYears){
     for(int year=1;year<=nYears;year++){
         y[year]=year;
         b[year]=b[year-1]*(1+intRate);
+        b[year]+=yDep;
     }
 }
