@@ -8,6 +8,7 @@
 //System Libraries
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 //User Libraries
@@ -60,5 +61,5 @@ void presVal(int futVal,float inRate,int nYears){
     float pv;//Initial deposit required
     pv=futVal/pow(1+(inRate/PERCENT),nYears);
     cout<<"The initial deposit required to have $"<<futVal<<" after "<<nYears<<
-            " years is: $"<<pv<<endl;
+            " years is: $"<<fixed<<setprecision(2)<<pv<<endl;
 }
