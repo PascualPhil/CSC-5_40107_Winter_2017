@@ -21,7 +21,7 @@ using namespace std;
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables
-    const int SIZE=10;//Creates size of array
+    const int SIZE=9;//Creates size of array
     int num[SIZE],min,max;
     
     //Input values
@@ -34,13 +34,14 @@ int main(int argc, char** argv) {
         cin>>num[i];
     }
     //Process by mapping inputs to outputs
-    min=num[0];
-    max=num[0];
+    min=max=num[0];
     for (int f=0;f<=SIZE;f++){
-        if (max<num[f]){
+        if (num[f]<min){
+            min=num[f];
+        }
+        else if (num[f]>max){
             max=num[f];
         }
-        else num[f]<min?:num[f]=min;
     }
     
     //Output values
