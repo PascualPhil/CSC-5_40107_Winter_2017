@@ -21,7 +21,7 @@ using namespace std;
 //Executable code begins here!!!
 int main(int argc, char** argv) {
     //Declare Variables
-    const int SIZE=9;//Creates size of array
+    const int SIZE=10;//Creates size of array
     int num[SIZE],min,max;
     
     //Input values
