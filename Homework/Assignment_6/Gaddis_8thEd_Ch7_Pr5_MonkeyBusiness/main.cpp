@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     const int COLS=5;
     float amtFood[ROWS][COLS];//Array for amount of food fed
     float avgFood=0,minFood,maxFood,totFood=0;//Average food eaten, minimum/maximum eaten
-    int total[ROWS];//Array that stores total amount of food eaten per monkey for week
+    int total[ROWS]={0,0,0};//Array that stores total amount of food eaten per monkey for week
     int minMonk,maxMonk;
     
     //Input values
@@ -62,24 +62,25 @@ int main(int argc, char** argv) {
     //Obtain and compare weekly consumption amounts
     for(int ro=0;ro<=ROWS-1;ro++){//Fills total array with weekly consumption
                                   //for each monkey
-        for(int co=1;co<=COLS-1;co++){
+        for(int co=0;co<=COLS-1;co++){
             total[ro]+=amtFood[ro][co];
         }
     }
     minFood=maxFood=total[0];
-    for(int tot=0;tot<=2;tot++){
+    minMonk=maxMonk=1;
+    for(int tot=0;tot<=ROWS-1;tot++){
         if(total[tot]<minFood){
-            total[tot]=minFood;
-            tot=minMonk;
+            minFood=total[tot];
+            minMonk=tot+1;
         }
         else if(total[tot]>maxFood){
-            total[tot]=maxFood;
-            tot=maxMonk;
+            maxFood=total[tot];
+            maxMonk=tot+1;
         }
     }
     //Output minimimum and maximum food eaten
-    cout<<"The minimum weekly consumption is Monkey "<<minMonk<<": "<<static_cast<int>(minFood)<<endl;
-    cout<<"The maximum weekly consumption is Monkey "<<maxMonk<<": "<<static_cast<int>(maxFood)<<endl;
+    cout<<"The minimum weekly consumption is Monkey "<<minMonk<<" with "<<static_cast<int>(minFood)<<endl;
+    cout<<"The maximum weekly consumption is Monkey "<<maxMonk<<" with "<<static_cast<int>(maxFood)<<endl;
 
     //Exit stage right!
     return 0;
