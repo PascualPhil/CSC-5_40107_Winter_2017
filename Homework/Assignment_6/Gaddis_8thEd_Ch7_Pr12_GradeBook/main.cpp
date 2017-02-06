@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
     
     //Process by mapping inputs to outputs
     for(int i=0;i<=SIZE-1;i++){
-        average[i]=static_cast<float>(totSco[i])/SIZE;
+        average[i]=static_cast<float>(totSco[i])/SCORES;
         if (average[i]>=90){
             grades[i]='A';
         }
@@ -75,8 +75,8 @@ int main(int argc, char** argv) {
     cout<<"Student Name:          Average:           Grade:"<<endl;
     cout<<"------------------------------------------------"<<endl;
     for(int j=0;j<=SIZE-1;j++){
-        cout<<left<<setw(20)<<studnts[j]<<"   "<<setw(5)<<fixed<<setprecision(2)<<
-                average[j]<<"      "<<grades[j]<<endl;
+        cout<<left<<setw(20)<<studnts[j]<<"     "<<right<<setw(6)<<fixed<<setprecision(2)<<
+                average[j]<<"              "<<grades[j]<<endl;
     }
     //Exit stage right!
     return 0;
