@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-void markSrt(int a[],int n){
+void markSrt(int *a,int n){
     for(int i=0;i<n-1;i++){
         smalst(a,n,i);
     }    
@@ -57,7 +57,7 @@ void markSrt(int a[],int n){
 
 void smalst(int a[],int n,int pos){
     for(int i=pos+1;i<n;i++){
-        if(a[pos]>a[i])swap(a[pos],a[i]);
+        if(a[pos]>a[i])swap(*(a+pos),a[i]);
     }
 }
 
@@ -80,22 +80,4 @@ void filAray(int a[],int n){
     for(int i=0;i<n;i++){
         a[i]=rand()%90+10;
     }
-}
-
-void markSrt3(int a[],int n){
-    for(int i=0;i<n-1;i++){
-        smalst(a,n,i);
-    }    
-}
-
-void smalst(int a[],int n,int pos){
-    for(int i=pos+1;i<n;i++){
-        if(a[pos]>a[i])swap(a[pos],a[i]);
-    }
-}
-
-void swap(int &a,int &b){
-    a=a^b;
-    b=a^b;
-    a=a^b;
 }
