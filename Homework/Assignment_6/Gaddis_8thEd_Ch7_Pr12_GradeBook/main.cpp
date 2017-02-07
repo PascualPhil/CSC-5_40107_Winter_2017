@@ -32,7 +32,8 @@ int main(int argc, char** argv) {
     
     //Input values
     cout<<"This program will obtain the names of five different students"<<endl;
-    cout<<"and obtain their test scores.  It will then display their names"<<endl;
+    cout<<"and obtain their test scores.  It will then display their names"<<
+            endl;
     cout<<"average test scores and overall letter grade.  Please enter"<<endl;
     cout<<"all required information when requested."<<endl;
     cout<<endl;
@@ -75,8 +76,8 @@ int main(int argc, char** argv) {
     cout<<"Student Name:          Average:           Grade:"<<endl;
     cout<<"------------------------------------------------"<<endl;
     for(int j=0;j<=SIZE-1;j++){
-        cout<<left<<setw(20)<<studnts[j]<<"     "<<right<<setw(6)<<fixed<<setprecision(2)<<
-                average[j]<<"              "<<grades[j]<<endl;
+        cout<<left<<setw(20)<<studnts[j]<<"     "<<right<<setw(6)<<fixed<<
+                setprecision(2)<<average[j]<<"              "<<grades[j]<<endl;
     }
     //Exit stage right!
     return 0;

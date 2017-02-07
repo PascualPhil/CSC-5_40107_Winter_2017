@@ -64,8 +64,4 @@ void larger(int size,int numbers[],int n){
          cout<<numbers[j]<<" ";   
         }
     }
-    
-    
-    
-    
 }

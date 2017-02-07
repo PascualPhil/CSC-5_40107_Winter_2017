@@ -29,8 +29,10 @@ int main(int argc, char** argv) {
     float wages[SIZE],payRate[SIZE];
     
     //Input values
-    cout<<"This program will calculate a worker's gross wages based on the"<<endl;
-    cout<<"number of hours worked and their pay rate.  Please enter all"<<endl;
+    cout<<"This program will calculate a worker's gross wages based on the"
+            <<endl;
+    cout<<"number of hours worked and their pay rate.  Please enter all"
+            <<endl;
     cout<<"required information when requested."<<endl;
     cout<<endl;
     
@@ -59,7 +61,8 @@ int main(int argc, char** argv) {
     cout<<"Employee ID:        Total Wages:"<<endl;
     cout<<"--------------------------------"<<endl;
     for(int i=0;i<=SIZE-1;i++){
-        cout<<empId[i]<<"              "<<fixed<<setprecision(2)<<wages[i]<<endl;
+        cout<<empId[i]<<"              "<<fixed<<setprecision(2)<<wages[i]
+                <<endl;
     }
 
     //Exit stage right!
