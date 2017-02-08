@@ -76,7 +76,6 @@ void markSrt(int a[],int n){
     }    
 }
 
-
 void prntAry(int a[],int n,int perLine){
     cout<<endl;
     for(int i=0;i<n;i++){
