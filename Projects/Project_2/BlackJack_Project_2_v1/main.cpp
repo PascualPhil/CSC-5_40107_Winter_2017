@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     
     //Declare Variables
     string name;
-    int stack,//Initial chip stack player has
+    int stack=100,//Initial chip stack player has
                  bet;//Bet amount
     int score;
     int pTotal,dTotal;
@@ -71,7 +71,8 @@ int main(int argc, char** argv) {
         string pCards[SIZE]={},dCards[SIZE]={};
         pTotal=0;
         dTotal=0;
-        pDeal(pCards,stack=100,bet,pTotal);//Get bet amount and deal player cards
+        pDeal(pCards,stack,bet=0,pTotal);//Get bet amount and deal player 
+                                           //cards
         cout<<endl;
         dDeal(dCards,dTotal);//Deal initial dealer card
         //Obtain player choice on if to hit, stand, double, or split
@@ -91,7 +92,7 @@ int main(int argc, char** argv) {
 }
 //******************************************************************************
 //                      Initial Player Deal Function
-//Description:  Deals and displays first two player cards and obtains bet amt
+//Description:  Deals and displays first two player cards and obtains bet amount
 //Input: Bet amount
 //Output: First two cards, score total, bet amount as reference variable
 //******************************************************************************
@@ -106,7 +107,8 @@ int pDeal(string pcard[],int &a,int &bet,int &pScore){
     }
     //Generates first two cards for player
     //Deal player cards
-            p1=pp1=rand()%13+2;         //Generates random number between 2-14 for card 1
+            p1=pp1=rand()%13+2;         //Generates random number between 2-14 
+                                        //for card 1
             //Corresponds random number 2-14 to player card 2-A
             switch(p1){
                 case 2:pcard[0]+="2 ";break;
@@ -117,13 +119,15 @@ int pDeal(string pcard[],int &a,int &bet,int &pScore){
                 case 7:pcard[0]+="7 ";break;
                 case 8:pcard[0]+="8 ";break;
                 case 9:pcard[0]+="9 ";break;
-                case 10:{pcard[0]+="10 ";p1=10;}break;    //If RNG generates 10-K, score
-                case 11:{pcard[0]+="J ";p1=10;}break;     //automatically set to add 10
+                //If RNG generates 10-K, score automatically set to add 10
+                case 10:{pcard[0]+="10 ";p1=10;}break;    
+                case 11:{pcard[0]+="J ";p1=10;}break;     
                 case 12:{pcard[0]+="Q ";p1=10;}break;
                 case 13:{pcard[0]+="K ";p1=10;}break;
-                case 14:{pcard[0]+="A ";p1=11;}break;     //If RNG generates A, score
-            }                                           //automatically set to add A
-            p2=pp2=rand()%13+2;     //Generates random number between 2-14 for card 2
+                //If RNG generates A, score automatically set to add A
+                case 14:{pcard[0]+="A ";p1=11;}break;     
+            }                                           
+            p2=pp2=rand()%13+2;//Generates random number between 2-14 for card 2
             //Corresponds random number 2-14 to player card 2-A
             switch(p2){
                 case 2:pcard[1]+="2 ";break;
@@ -140,8 +144,9 @@ int pDeal(string pcard[],int &a,int &bet,int &pScore){
                 case 13:{pcard[1]+="K ";p2=10;}break;
                 case 14:{pcard[1]+="A ";p2=11;}break;
             }
-            if(pp1==14&&pp2==14){       //If two aces dealt, first ace switched from
-                p1=1;                   //worth 11 to worth 1
+            //If two aces dealt, first ace switched from worth 11 to worth 1
+            if(pp1==14&&pp2==14){       
+                p1=1;                   
             }
             pScore=p1+p2;   //Adds first and second card to find initial score
             cout<<"Your first two cards are: ";
@@ -149,6 +154,10 @@ int pDeal(string pcard[],int &a,int &bet,int &pScore){
                         cout<<pcard[count];
                     }
             cout<<"= "<<pScore;
+            if((p1+p2)==21){
+                cout<<"A natural blackjack! You win 3:2!"<<endl;
+                bet*=1.5;
+            }
 }
 //******************************************************************************
 //                              Initial Dealer Function
@@ -254,7 +263,7 @@ int pHit(string cards[],int &tot,string dealer[],int &dealSc){
 //******************************************************************************
 void pCheck(int &score,string cards[],string dealer[],int &dScore){
     char hitStnd;
-    if(score>22){
+    if(score>=22){
         cout<<"You bust!"<<endl;
     }else if(score<=21){
         cout<<"Would you like to [H]it or [S]tand? ";
@@ -407,7 +416,10 @@ void dHit(string dealer[],int &dealSC){
 void compare(int pTotal,int dTotal,int bet,int &stack){
     cout<<pTotal<<"  "<<dTotal;
     cout<<endl;
-    if(dTotal>21||pTotal>dTotal){
+    if(dTotal>21){
+        stack+=bet;
+        cout<<"You win!  Your stack is now "<<stack<<" chips."<<endl;
+    }else if(pTotal>dTotal){
         stack+=bet;
         cout<<"You win!  Your stack is now "<<stack<<" chips."<<endl;
     }else if(pTotal>21||pTotal<dTotal){
