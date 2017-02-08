@@ -23,6 +23,7 @@ void prntAry(int [],int,int);
 void swap(int &,int &);
 void smalst(int [],int,int);
 void markSrt(int [],int);
+void markSrt3(int [],int);
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -79,4 +80,22 @@ void filAray(int a[],int n){
     for(int i=0;i<n;i++){
         a[i]=rand()%90+10;
     }
+}
+
+void markSrt3(int a[],int n){
+    for(int i=0;i<n-1;i++){
+        smalst(a,n,i);
+    }    
+}
+
+void smalst(int a[],int n,int pos){
+    for(int i=pos+1;i<n;i++){
+        if(a[pos]>a[i])swap(a[pos],a[i]);
+    }
+}
+
+void swap(int &a,int &b){
+    a=a^b;
+    b=a^b;
+    a=a^b;
 }
