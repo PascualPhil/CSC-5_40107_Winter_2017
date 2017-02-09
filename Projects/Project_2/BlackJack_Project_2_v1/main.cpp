@@ -20,7 +20,6 @@ using namespace std;
 //Such as PI, Vc, -> Math/Science values
 //as well as conversions from system of units to 
 //another
-const float PERCENT=100.0;          //Constant float for percentage conversion
 const int SIZE=10;//Sets size of array
 
 //Function Prototypes
@@ -56,8 +55,6 @@ int main(int argc, char** argv) {
     int score;
     int pTotal,dTotal;
     char play='Y';
-    vector<string> scoName;
-    vector<int> scoNum;
 
     //Program description
     sign(welcome);
@@ -209,7 +206,8 @@ int dDeal(vector<string> &dcard, int &dScore){
                 case 14:{dcard[0]+="A ";d1=11;}break;
             }
             dScore=d1;   //Stores initial dealer score
-            cout<<"The dealer's hand shows a "<<dcard[0]<<"= "<<dScore<<endl;
+            cout<<"The dealer's hand shows a "<<dcard[0]<<"= "<<setw(2)<<dScore
+                    <<endl;
 }
 
 //******************************************************************************
@@ -287,7 +285,7 @@ void pCheck(int &score,string cards[],vector<string> &dealer,int &dScore){
     char hitStnd;
     if(score>=22){
         cout<<"You bust!"<<endl;
-    }else if(score<=21){
+    }else{
         cout<<"Would you like to [H]it or [S]tand? ";
         cin>>hitStnd;
         while(hitStnd!='H'&&hitStnd!='S'){
@@ -383,10 +381,8 @@ void pStand(vector<string> &dealer,int &dealSC){
     cout<<"= "<<dealSC<<"."<<endl;
     if(dealSC>21){
         cout<<"The Dealer busts!";
-    }else if(dealSC<17){
-        dHit(dealer,dealSC);
     }else{
-        //compare(dealSC,)
+        dHit(dealer,dealSC);
     }
 }
 //******************************************************************************
@@ -398,23 +394,21 @@ void pStand(vector<string> &dealer,int &dealSC){
 void dHit(vector<string> &dealer,int &dealSC){
     int dCount=2;//Counter for array
     int dAdd,dPlus;
-    if(dealSC<17){
-        dPlus=dAdd=rand()%13+2;//Generates random number between 2-14
-        switch(dAdd){
-                case 2:dealer[dCount]+="2 ";break;
-                case 3:dealer[dCount]+="3 ";break;
-                case 4:dealer[dCount]+="4 ";break;
-                case 5:dealer[dCount]+="5 ";break;
-                case 6:dealer[dCount]+="6 ";break;
-                case 7:dealer[dCount]+="7 ";break;
-                case 8:dealer[dCount]+="8 ";break;
-                case 9:dealer[dCount]+="9 ";break;
-                case 10:{dealer[dCount]+="10 ";dPlus=10;}break;
-                case 11:{dealer[dCount]+="J ";dPlus=10;}break;
-                case 12:{dealer[dCount]+="Q ";dPlus=10;}break;
-                case 13:{dealer[dCount]+="K ";dPlus=10;}break;
-                case 14:{dealer[dCount]+="A ";dPlus=11;}break;
-        }
+    dPlus=dAdd=rand()%13+2;//Generates random number between 2-14
+    switch(dAdd){
+            case 2:dealer[dCount]+="2 ";break;
+            case 3:dealer[dCount]+="3 ";break;
+            case 4:dealer[dCount]+="4 ";break;
+            case 5:dealer[dCount]+="5 ";break;
+            case 6:dealer[dCount]+="6 ";break;
+            case 7:dealer[dCount]+="7 ";break;
+            case 8:dealer[dCount]+="8 ";break;
+            case 9:dealer[dCount]+="9 ";break;
+            case 10:{dealer[dCount]+="10 ";dPlus=10;}break;
+            case 11:{dealer[dCount]+="J ";dPlus=10;}break;
+            case 12:{dealer[dCount]+="Q ";dPlus=10;}break;
+            case 13:{dealer[dCount]+="K ";dPlus=10;}break;
+            case 14:{dealer[dCount]+="A ";dPlus=11;}break;
     }
     dCount++;
     dealSC+=dPlus;
@@ -446,7 +440,7 @@ void compare(int pTotal,int dTotal,int bet,int &stack){
     }else if(pTotal>dTotal){
         stack+=bet;
         cout<<"You win!  Your stack is now "<<stack<<" chips."<<endl;
-    }else if(pTotal>21||pTotal<dTotal){
+    }else if(pTotal<dTotal){
         stack-=bet;
         cout<<"Sorry, you lose.  Your stack is now "<<stack<<" chips."<<endl;
     }else{
