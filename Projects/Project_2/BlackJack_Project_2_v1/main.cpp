@@ -32,7 +32,7 @@ void pDouble(string [],int &,int &,vector<string> &,int &);
 void pStand(vector<string> &,int &);
 void dHit(vector<string> &,int&);
 void compare(int,int,int,int &);
-void sign(char [][10]);
+void sign(char [][SIZE]);
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     out.open("blackjackstats.txt",ios::app);
     
     //Declare Variables
-    char welcome[3][10]={{' ','W','E','L','C','O','M','E',' ',' '},
+    char welcome[3][SIZE]={{' ','W','E','L','C','O','M','E',' ',' '},
                          {' ',' ',' ',' ','T','O',' ',' ',' ',' '},
                          {'B','L','A','C','K','J','A','C','K','!'}};
     string name;
@@ -94,7 +94,6 @@ int main(int argc, char** argv) {
     cout<<"Thanks for playing "<<name<<", the list of scores is available at "
             "blackjackstats.txt."<<endl;
     out<<stack<<" "<<name<<endl;
-    out<<endl;
     cout<<endl;
     cout<<"Here are some recent scores:"<<endl;
     int i_temp;
@@ -174,6 +173,7 @@ int pDeal(string pcard[],int &a,int &bet,int &pScore){
                     }
             cout<<"= "<<static_cast<int>(pScore);
             if((p1+p2)==21){
+                cout<<endl;
                 cout<<"A natural blackjack! You win 3:2!"<<endl;
                 bet*=1.5;
             }
@@ -381,7 +381,7 @@ void pStand(vector<string> &dealer,int &dealSC){
     cout<<"= "<<dealSC<<"."<<endl;
     if(dealSC>21){
         cout<<"The Dealer busts!";
-    }else{
+    }else if(dealSC<17){
         dHit(dealer,dealSC);
     }
 }
@@ -450,9 +450,9 @@ void compare(int pTotal,int dTotal,int bet,int &stack){
     
 }
 
-void sign(char a[][10]){
+void sign(char a[][SIZE]){
     for (int row=0;row<=2;row++){
-        for(int col=0;col<=9;col++){
+        for(int col=0;col<=SIZE-1;col++){
             cout<<a[row][col];
         }
         cout<<endl;
