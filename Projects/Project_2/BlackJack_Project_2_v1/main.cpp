@@ -11,6 +11,7 @@
 #include <ctime>
 #include <iomanip>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 //User Libraries
@@ -24,14 +25,15 @@ const int SIZE=10;//Sets size of array
 
 //Function Prototypes
 int pDeal(string [],int &,int &,int &);
-int dDeal(string [],int &);
-void choice(string [],int &,int &,string[],int &);
-int pHit(string [],int &,string [],int &);
-void pCheck(int &,string[],string[],int &);
-void pDouble(string [],int &,int &,string [],int &);
-void pStand(string [],int &);
-void dHit(string[],int&);
+int dDeal(vector<string> &,int &);
+void choice(string [],int &,int &,vector<string> &,int &);
+int pHit(string [],int &,vector<string> &,int &);
+void pCheck(int &,string[],vector<string> &,int &);
+void pDouble(string [],int &,int &,vector<string> &,int &);
+void pStand(vector<string> &,int &);
+void dHit(vector<string> &,int&);
 void compare(int,int,int,int &);
+void sign(char [][10]);
 
 //Executable code begins here!!!
 int main(int argc, char** argv) {
@@ -42,18 +44,23 @@ int main(int argc, char** argv) {
     ifstream in;
     ofstream out;
     in.open("blackjackstats.txt");
-    out.open("blackjackstats.txt");
+    out.open("blackjackstats.txt",ios::app);
     
     //Declare Variables
+    char welcome[3][10]={{' ','W','E','L','C','O','M','E',' ',' '},
+                         {' ',' ',' ',' ','T','O',' ',' ',' ',' '},
+                         {'B','L','A','C','K','J','A','C','K','!'}};
     string name;
     int stack=100,//Initial chip stack player has
                  bet;//Bet amount
     int score;
     int pTotal,dTotal;
     char play='Y';
-    
+    vector<string> scoName;
+    vector<int> scoNum;
+
     //Program description
-    cout<<"Welcome to Blackjack!"<<endl;
+    sign(welcome);
     cout<<"You will play a game of blackjack against a computer dealer.  The "
             "object"<<endl;
     cout<<"of the game is to make a hand that beats the dealer's hand without "
@@ -62,13 +69,13 @@ int main(int argc, char** argv) {
             <<endl;
     cout<<endl;
     cout<<"Please enter your name: ";
-    cin>>name;
-    in>>name;
+    getline(cin,name);
     
     //Display initial chip stack.
     cout<<"Welcome "<<name<<".  You have 100 chips to bet."<<endl;
     do{
-        string pCards[SIZE]={},dCards[SIZE]={};
+        string pCards[SIZE]={};//,dCards[SIZE]={};
+        vector<string> dCards(SIZE);
         pTotal=0;
         dTotal=0;
         pDeal(pCards,stack,bet=0,pTotal);//Get bet amount and deal player 
@@ -87,7 +94,22 @@ int main(int argc, char** argv) {
             cin>>play;
         }
     }while(play=='Y');
+    cout<<"Thanks for playing "<<name<<", the list of scores is available at "
+            "blackjackstats.txt."<<endl;
+    out<<stack<<" "<<name<<endl;
+    out<<endl;
+    cout<<endl;
+    cout<<"Here are some recent scores:"<<endl;
+    int i_temp;
+    string s_temp;
+    while(!in.eof()){
+        in>>i_temp;
+        in>>s_temp;
+        cout<<s_temp<<" "<<i_temp<<endl;
+        }
     //Exit stage right!
+    in.close();
+    out.close();
     return 0;
 }
 //******************************************************************************
@@ -166,7 +188,7 @@ int pDeal(string pcard[],int &a,int &bet,int &pScore){
 //Output: First dealer card and total
 //******************************************************************************
 
-int dDeal(string dcard[], int &dScore){
+int dDeal(vector<string> &dcard, int &dScore){
     int d1,dd1;
     //Deal first dealer card
            d1=dd1=rand()%13+2;             //RNG generates random number 2-14
@@ -196,7 +218,7 @@ int dDeal(string dcard[], int &dScore){
 //Input: Choice
 //Output hit, stand, split or double down function
 //******************************************************************************
-void choice(string cards[],int &totSc,int &bet,string dCards[],int &dealSc){
+void choice(string cards[],int &totSc,int &bet,vector<string> &dCards,int &dealSc){
     char ch;
     cout<<"Would you like to [H]it or [S]tand or [D]ouble Down? ";
     cin>>ch;
@@ -217,7 +239,7 @@ void choice(string cards[],int &totSc,int &bet,string dCards[],int &dealSc){
 //Input: Hit or Stand
 //Output: Updated player hand and score
 //******************************************************************************
-int pHit(string cards[],int &tot,string dealer[],int &dealSc){
+int pHit(string cards[],int &tot,vector<string> &dealer,int &dealSc){
     int pAdd,pPlus;
     int count=2;//Counter for array
     bool c=true;
@@ -261,7 +283,7 @@ int pHit(string cards[],int &tot,string dealer[],int &dealSc){
 //Input: Score total
 //Output: Bust, hit, or stand
 //******************************************************************************
-void pCheck(int &score,string cards[],string dealer[],int &dScore){
+void pCheck(int &score,string cards[],vector<string> &dealer,int &dScore){
     char hitStnd;
     if(score>=22){
         cout<<"You bust!"<<endl;
@@ -285,7 +307,7 @@ void pCheck(int &score,string cards[],string dealer[],int &dScore){
 //Input: None
 //Output: Double bet
 //******************************************************************************
-void pDouble(string cards[],int &score,int &bet,string dealer[],int &dealSc){
+void pDouble(string cards[],int &score,int &bet,vector<string> &dealer,int &dealSc){
     bet*=2;
     cout<<"You double down, increasing your bet to "<<bet<<"."<<endl;
     int pAdd,pPlus;
@@ -333,7 +355,7 @@ void pDouble(string cards[],int &score,int &bet,string dealer[],int &dealSc){
 //Input: None
 //Output: Dealer hand and score
 //******************************************************************************
-void pStand(string dealer[],int &dealSC){
+void pStand(vector<string> &dealer,int &dealSC){
     int dCount=1;//Counter for array
     int dAdd,dPlus;
     dPlus=dAdd=rand()%13+2;//Generates random number between 2-14
@@ -373,7 +395,7 @@ void pStand(string dealer[],int &dealSC){
 //Input: None
 //Output: Updated dealer hand and score
 //******************************************************************************
-void dHit(string dealer[],int &dealSC){
+void dHit(vector<string> &dealer,int &dealSC){
     int dCount=2;//Counter for array
     int dAdd,dPlus;
     if(dealSC<17){
@@ -414,9 +436,11 @@ void dHit(string dealer[],int &dealSC){
 //Output: Outcome of hand and updated chip stack.
 //******************************************************************************
 void compare(int pTotal,int dTotal,int bet,int &stack){
-    cout<<pTotal<<"  "<<dTotal;
     cout<<endl;
-    if(dTotal>21){
+    if(pTotal>21&&dTotal<21){
+        stack-=bet;
+        cout<<"Sorry, you lose.  Your stack is now "<<stack<<" chips."<<endl;
+    }else if(dTotal>21&&pTotal<21){
         stack+=bet;
         cout<<"You win!  Your stack is now "<<stack<<" chips."<<endl;
     }else if(pTotal>dTotal){
@@ -430,4 +454,13 @@ void compare(int pTotal,int dTotal,int bet,int &stack){
                 endl;
     }
     
+}
+
+void sign(char a[][10]){
+    for (int row=0;row<=2;row++){
+        for(int col=0;col<=9;col++){
+            cout<<a[row][col];
+        }
+        cout<<endl;
+    }
 }
