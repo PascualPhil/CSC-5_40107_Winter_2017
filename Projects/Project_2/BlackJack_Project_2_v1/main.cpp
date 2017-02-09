@@ -175,7 +175,7 @@ int pDeal(string pcard[],int &a,int &bet,int &pScore){
                     for (int count=0;count<=1;count++){
                         cout<<pcard[count];
                     }
-            cout<<"= "<<pScore;
+            cout<<"= "<<static_cast<int>(pScore);
             if((p1+p2)==21){
                 cout<<"A natural blackjack! You win 3:2!"<<endl;
                 bet*=1.5;
